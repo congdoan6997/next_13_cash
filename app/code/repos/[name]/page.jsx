@@ -1,6 +1,7 @@
 import React from "react";
 import Repo from "@/app/components/Repo";
 import RepoDirs from "@/app/components/RepoDirs";
+import { Suspense } from "react";
 import Link from "next/link";
 
 const RepoPage = ({ params: { name } }) => {
@@ -9,8 +10,12 @@ const RepoPage = ({ params: { name } }) => {
       <Link href="/code/repos" className="btn btn-back">
         Back to repositories
       </Link>
-      <Repo name={name}></Repo>
-      <RepoDirs name={name}></RepoDirs>
+      <Suspense fallback={<div>Loading a repository</div>}>
+        <Repo name={name}></Repo>
+      </Suspense>
+      <Suspense fallback={<div>Loading repository directions</div>}>
+        <RepoDirs name={name}></RepoDirs>
+      </Suspense>
     </div>
   );
 };
