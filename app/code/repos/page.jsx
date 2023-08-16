@@ -4,6 +4,7 @@ import Link from "next/link";
 
 async function fetchRepos() {
   const repon = await fetch("https://api.github.com/users/bradtraversy/repos");
+  //   await new Promise((resolve) => setTimeout(resolve, 1000));
   return await repon.json();
 }
 
