@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import React from "react";
 import LoadingPage from "./loading";
 import Courses from "./components/Courses";
+import CourseSearch from "./components/CourseSearch";
 
 const HomePage = () => {
   const [courses, setCourses] = useState([]);
@@ -25,6 +25,7 @@ const HomePage = () => {
   return (
     <div>
       <h1>Hello to my project</h1>
+      <CourseSearch getSearchCourses={(res) => setCourses(res)}></CourseSearch>
       <Courses courses={courses}></Courses>
     </div>
   );
